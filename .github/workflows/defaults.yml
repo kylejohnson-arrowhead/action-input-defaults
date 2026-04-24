@@ -1,0 +1,21 @@
+name: Greeting Action
+on:
+ workflow_dispatch:
+   inputs:
+     hello:
+       type: boolean
+       default: true
+     bye:
+       type: boolean
+       default: false
+jobs:
+ say-hello:
+   if: ${{ github.event.inputs.hello }}
+   runs-on: ubuntu-latest
+   steps:
+     - run: echo "Hello"
+ say-bye:
+   if: ${{ github.event.inputs.bye }}
+   runs-on: ubuntu-latest
+   steps:
+     - run: echo "Good bye"
